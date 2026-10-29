@@ -1,0 +1,228 @@
+/* ═══════════════════════════════════════════════════════════════════
+   CARD — the letter
+   ═══════════════════════════════════════════════════════════════════ */
+
+#card-layer { z-index: 100; }
+
+.paper {
+  position: relative;
+  width: min(560px, 100%);
+  max-height: 88vh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: clamp(28px, 7vw, 56px);
+  background:
+    linear-gradient(135deg,
+      color-mix(in srgb, var(--paper) 92%, white) 0%,
+      var(--paper) 55%,
+      color-mix(in srgb, var(--paper) 88%, var(--hot)) 100%);
+  color: var(--ink-on-paper);
+  border-radius: 3px;
+  box-shadow:
+    0 0 0 6px color-mix(in srgb, var(--paper) 12%, transparent),
+    0 40px 90px -20px rgba(0, 0, 0, .9);
+  transform-origin: 50% 90%;
+  animation: paper-open .8s var(--ease) both;
+}
+@keyframes paper-open {
+  from { opacity: 0; transform: translateY(6%) scale(.92) rotate(-1.5deg); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* faint ruled texture */
+.paper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: .18;
+  background-image: repeating-linear-gradient(0deg,
+    transparent 0 31px,
+    color-mix(in srgb, var(--ink-on-paper) 14%, transparent) 31px 32px);
+}
+
+.paper-top {
+  font: 10px/1 var(--mono);
+  letter-spacing: .26em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--hot) 80%, var(--ink-on-paper));
+  margin-bottom: 18px;
+}
+
+.paper-name {
+  font: italic 500 clamp(30px, 7vw, 42px)/1.1 var(--serif);
+  color: color-mix(in srgb, var(--hot) 88%, black);
+  margin-bottom: 22px;
+}
+
+[data-theme="sakura"] .paper {
+  border-radius: 24px;
+  background: linear-gradient(145deg, #FFFDFC 0%, #FFF4F7 58%, #FDEAF0 100%);
+  box-shadow:
+    0 0 0 6px rgba(254, 230, 238, 0.6),
+    0 24px 65px -15px rgba(96, 40, 58, 0.35);
+  border: 1.5px solid rgba(232, 99, 140, 0.25);
+}
+[data-theme="sakura"] .paper-actions .btn-solid {
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--hot) 100%);
+  color: #FFFDFC;
+  border: none;
+  box-shadow: 0 6px 18px rgba(214, 68, 107, 0.32);
+}
+[data-theme="sakura"] .paper-actions .btn-ghost {
+  border-radius: 999px;
+  border: 1px solid rgba(232, 99, 140, 0.35);
+  color: #5A2637;
+}
+[data-theme="sakura"] .paper-top::before {
+  content: "🎀 ";
+  font-size: 1.1em;
+}
+[data-theme="sakura"] .paper-name {
+  font-family: var(--script);
+  font-size: clamp(38px, 9vw, 54px);
+  color: var(--hot);
+  font-style: normal;
+  line-height: 1.2;
+}
+[data-theme="sakura"] .paper-sign {
+  font-family: var(--script);
+  font-size: clamp(32px, 7.5vw, 42px);
+  color: var(--hot);
+  font-style: normal;
+}
+
+.paper-body {
+  font: 400 clamp(17px, 4.3vw, 20px)/1.75 var(--serif);
+  min-height: 40vh;                 /* reserve space: no jumping while typing */
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.paper-body::after {
+  content: "";
+  display: inline-block;
+  width: 2px;
+  height: 1.05em;
+  margin-left: 2px;
+  vertical-align: -3px;
+  background: color-mix(in srgb, var(--hot) 70%, transparent);
+  animation: caret .9s steps(2) infinite;
+}
+.paper-body.is-done::after { display: none; }
+@keyframes caret { 50% { opacity: 0; } }
+
+.paper-sign {
+  margin-top: 26px;
+  font: italic 500 26px/1 var(--serif);
+  color: color-mix(in srgb, var(--hot) 88%, black);
+  opacity: 0;
+  transition: opacity .8s;
+}
+.paper-sign.is-on { opacity: 1; }
+
+.paper-actions {
+  margin-top: 30px;
+  padding-top: 18px;
+  border-top: 1px solid color-mix(in srgb, var(--ink-on-paper) 18%, transparent);
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.paper-actions .btn-solid,
+.paper-actions .btn-ghost {
+  color: var(--ink-on-paper);
+  border-color: color-mix(in srgb, var(--ink-on-paper) 40%, transparent);
+}
+.paper-actions .btn-solid {
+  background: var(--hot);
+  color: var(--paper);
+  border-color: var(--hot);
+  box-shadow: none;
+}
+
+/* ── the slice ──────────────────────────────────────────────────── */
+#cake-layer { z-index: 105; }
+
+.cake-pop {
+  width: min(400px, 100%);
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: clamp(20px, 5.5vw, 30px) clamp(22px, 6vw, 34px) clamp(18px, 4.5vw, 24px);
+  text-align: center;
+  border-radius: 3px;
+  background:
+    linear-gradient(160deg,
+      color-mix(in srgb, var(--paper) 94%, white) 0%,
+      var(--paper) 62%,
+      color-mix(in srgb, var(--paper) 86%, var(--accent)) 100%);
+  color: var(--ink-on-paper);
+  box-shadow:
+    0 0 0 6px color-mix(in srgb, var(--paper) 22%, transparent),
+    0 36px 80px -22px var(--shade);
+  animation: paper-open .7s var(--ease) both;
+}
+
+.cake-pop-art {
+  display: block;
+  width: min(232px, 70%);
+  margin: 0 auto 2px;
+  filter: drop-shadow(0 12px 14px color-mix(in srgb, var(--hot) 16%, transparent));
+}
+
+.cake-pop-kicker {
+  font: 10px/1 var(--mono);
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--hot) 78%, var(--ink-on-paper));
+}
+.cake-pop-title {
+  margin: 10px 0 8px;
+  font: italic 500 clamp(24px, 6.6vw, 32px)/1.2 var(--serif);
+  color: var(--hot);
+}
+.cake-pop-line {
+  font: 400 clamp(15px, 4vw, 17px)/1.65 var(--serif);
+  color: color-mix(in srgb, var(--ink-on-paper) 80%, transparent);
+}
+.cake-pop-actions {
+  margin-top: 22px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.cake-pop-actions .btn-ghost {
+  border-color: color-mix(in srgb, var(--ink-on-paper) 34%, transparent);
+  color: color-mix(in srgb, var(--ink-on-paper) 78%, transparent);
+}
+.cake-pop-actions .btn-solid { box-shadow: none; }
+
+/* ── Mobile Responsive Paper Refinement ────────────────────────── */
+@media (max-width: 480px) {
+  .paper {
+    padding: 20px 18px 22px;
+    max-height: 88vh;
+  }
+  .paper-top {
+    margin-bottom: 10px;
+    font-size: 9px;
+  }
+  [data-theme="sakura"] .paper-name {
+    font-size: 30px;
+    margin-bottom: 10px;
+  }
+  .paper-body {
+    font-size: 14px;
+    line-height: 1.5;
+    min-height: auto;
+  }
+  .paper-sign {
+    margin-top: 14px;
+    font-size: 26px;
+  }
+  .paper-actions {
+    margin-top: 16px;
+  }
+}

@@ -1,0 +1,231 @@
+/* ═══════════════════════════════════════════════════════════════════
+   INTRO CURTAIN — Dark blackout veil with hanging mistletoe pull-cord
+   ═══════════════════════════════════════════════════════════════════ */
+
+#intro-curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: radial-gradient(circle at 50% 35%, #18121B 0%, #0E0A12 55%, #050407 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  transition: opacity 0.85s cubic-bezier(0.25, 1, 0.5, 1), transform 0.85s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+#intro-curtain.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(1.08);
+}
+
+/* Subtle ambient fairy dust / stars in the dark */
+.curtain-dust {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(1.5px 1.5px at 20px 30px, rgba(255, 235, 205, 0.4), transparent),
+    radial-gradient(1.2px 1.2px at 80px 140px, rgba(255, 200, 220, 0.35), transparent),
+    radial-gradient(1.8px 1.8px at 190px 70px, rgba(255, 245, 220, 0.5), transparent),
+    radial-gradient(1.5px 1.5px at 290px 220px, rgba(255, 210, 230, 0.4), transparent),
+    radial-gradient(1.2px 1.2px at 340px 110px, rgba(255, 230, 210, 0.35), transparent);
+  background-size: 380px 380px;
+  opacity: 0.6;
+  pointer-events: none;
+  animation: dust-shimmer 8s ease-in-out infinite alternate;
+}
+
+@keyframes dust-shimmer {
+  0%   { opacity: 0.4; transform: translateY(0); }
+  100% { opacity: 0.75; transform: translateY(-8px); }
+}
+
+/* Light burst when cord is pulled */
+.light-flash {
+  position: absolute;
+  top: 42%;
+  left: 50%;
+  width: 140px;
+  height: 140px;
+  margin-left: -70px;
+  margin-top: -70px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #FFF6E5 0%, #FFD6A5 35%, #F78CA8 65%, rgba(247, 140, 168, 0) 100%);
+  opacity: 0;
+  transform: scale(0.2);
+  pointer-events: none;
+  z-index: 1005;
+  transition: transform 0.65s cubic-bezier(0.1, 0.9, 0.2, 1), opacity 0.65s ease-out;
+}
+
+.light-flash.flash-active {
+  opacity: 1;
+  transform: scale(22);
+}
+
+/* ── PULL RIG (CORD + MISTLETOE) ───────────────────────────────── */
+.pull-rig {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 200px;
+  cursor: pointer;
+  transform-origin: 50% 0%;
+  margin-top: 0;
+  padding-top: 0;
+  transition: transform 0.12s ease-out;
+}
+
+.pull-rig:active {
+  cursor: pointer;
+}
+
+/* Inner sway wrapper — gentle natural pendulum motion */
+.pull-sway {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform-origin: 50% 0%;
+  animation: sway-mistletoe 5.2s ease-in-out infinite alternate;
+}
+
+@keyframes sway-mistletoe {
+  0%   { transform: rotate(-2deg); }
+  50%  { transform: rotate(1.8deg); }
+  100% { transform: rotate(-1.5deg); }
+}
+
+/* Dynamic snap-down spring animation on click or trigger */
+.pull-rig.is-animating-pull {
+  animation: cord-pull-snap 0.5s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
+}
+
+@keyframes cord-pull-snap {
+  0%   { transform: translateY(0); }
+  35%  { transform: translateY(58px); }
+  60%  { transform: translateY(48px); }
+  80%  { transform: translateY(54px); }
+  100% { transform: translateY(0); }
+}
+
+/* The vertical hanging string from top ceiling */
+.pull-cord-line {
+  width: 2.5px;
+  height: clamp(80px, 14vh, 125px);
+  background: linear-gradient(180deg, rgba(230, 195, 120, 0.9) 0%, rgba(212, 175, 55, 0.85) 70%, rgba(255, 235, 175, 1) 100%);
+  box-shadow: 0 0 6px rgba(235, 195, 110, 0.55);
+}
+
+/* Mistletoe bundle wrapper */
+.pull-mistletoe-anchor {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: -2px;
+}
+
+.mistletoe-svg {
+  display: block;
+  width: 110px;
+  height: auto;
+  filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.75)) drop-shadow(0 0 14px rgba(232, 99, 140, 0.45));
+  transition: transform 0.25s var(--ease);
+}
+
+.pull-rig:hover .mistletoe-svg {
+  transform: scale(1.05);
+  filter: drop-shadow(0 10px 22px rgba(0, 0, 0, 0.85)) drop-shadow(0 0 20px rgba(247, 140, 168, 0.7));
+}
+
+/* Lower hanging chain & golden pull bead */
+.pull-chain {
+  width: 1.5px;
+  height: 48px;
+  background: repeating-linear-gradient(180deg, #E6C575 0px, #E6C575 3px, transparent 3px, transparent 6px);
+  margin-top: -4px;
+}
+
+.pull-bead {
+  width: 18px;
+  height: 26px;
+  border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%;
+  background: linear-gradient(135deg, #FFF0B8 0%, #E6C25B 45%, #B88E28 100%);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5), 0 0 14px rgba(235, 195, 95, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pull-bead::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 4px;
+  width: 5px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.pull-rig:hover .pull-bead {
+  transform: scale(1.2);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.65), 0 0 22px rgba(255, 220, 115, 1);
+}
+
+/* ── PROMPT & INSTRUCTION ──────────────────────────────────────── */
+.pull-prompt {
+  margin-top: 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  cursor: pointer;
+  animation: prompt-fade 2.4s ease-in-out infinite alternate;
+}
+
+@keyframes prompt-fade {
+  0%   { opacity: 0.75; transform: translateY(0); }
+  100% { opacity: 1; transform: translateY(4px); }
+}
+
+.prompt-arrow {
+  font-size: 24px;
+  line-height: 1;
+  color: #FFD6A5;
+  filter: drop-shadow(0 2px 10px rgba(232, 99, 140, 0.7));
+  animation: arrow-bounce 1.6s ease-in-out infinite;
+}
+
+@keyframes arrow-bounce {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(6px); }
+}
+
+.prompt-text {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(20px, 5.2vw, 24px);
+  color: #FFF2F6;
+  letter-spacing: 0.02em;
+  margin: 0;
+  text-shadow: 0 2px 14px rgba(232, 99, 140, 0.6), 0 0 2px rgba(255, 255, 255, 0.85);
+}
+
+.prompt-sub {
+  font-family: var(--mono);
+  font-size: clamp(10px, 2.8vw, 11px);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: #E2A7BF;
+  opacity: 0.9;
+  text-shadow: 0 0 8px rgba(226, 167, 191, 0.45);
+}

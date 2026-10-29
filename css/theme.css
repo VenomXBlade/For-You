@@ -1,0 +1,137 @@
+/* ═══════════════════════════════════════════════════════════════════
+   THEME — colours and type. Nothing structural lives here.
+   Switch themes from config.js: theme: "sakura" | "amber" | "plum" | "mint" | "rose"
+   ═══════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* type */
+  --serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --mono:  "Courier Prime", ui-monospace, "Courier New", monospace;
+  --script: "Alex Brush", "Cormorant Garamond", cursive, serif;
+
+  /* shape */
+  --radius: 2px;
+
+  /* motion */
+  --ease: cubic-bezier(.22, .61, .36, 1);
+  --slow: .9s;
+}
+
+/* ── SAKURA · daylight, blossom, pink paper (Coquette Vibe) ──────── */
+[data-theme="sakura"] {
+  --bg:      #FFF3F7;
+  --bg-deep: #FCE6EE;
+  --paper:   #FFFDFC;
+  --accent:  #E8638C;
+  --hot:     #D6446B;
+  --wood:    #C58E6B;
+  --wood-hi: #F0D0B5;
+  --ink-on-paper: #3D1C28;
+  --grain: .035;
+  --grade: sepia(.12) saturate(1.15) contrast(1.02) brightness(1.05) hue-rotate(-4deg);
+
+  /* text on the page, and the room beyond the table */
+  --ink:        #481F2F;
+  --ink-soft:   #8C596F;
+  --room:       #FEE7F0;
+  --room-deep:  #F8D1E2;
+  --seam:       rgba(96, 52, 40, .30);
+  --sheen:      rgba(255, 246, 236, .55);
+  --shade:      rgba(96, 40, 58, .26);
+
+  /* coquette tokens */
+  --cake-frosting: #FFF1F5;
+  --ribbon:        #F68EAD;
+  --ribbon-shade:  #C93960;
+  --gold-foil:     #E8CBA5;
+  --radius:        28px;
+}
+
+/* ── AMBER · candlelight, wood, film ────────────────────────────── */
+[data-theme="amber"] {
+  --bg:      #0B0A0F;
+  --bg-deep: #050408;
+  --paper:   #F6E7CB;
+  --accent:  #F2A541;
+  --hot:     #C8372D;
+  --wood:    #3A2416;
+  --wood-hi: #5B3A22;
+  --ink-on-paper: #24151A;
+  --grain: .09;
+  /* how the photos are graded inside the projector */
+  --grade: sepia(.58) saturate(1.22) contrast(1.04) brightness(.97) hue-rotate(-6deg);
+
+  --ink:       #F6E7CB;
+  --ink-soft:  #B9A88C;
+  --room:      #050405;
+  --room-deep: #020202;
+  --seam:      rgba(0, 0, 0, .38);
+  --sheen:     rgba(255, 255, 255, .045);
+  --shade:     rgba(0, 0, 0, .80);
+}
+
+/* ── PLUM · velvet seats, deep curtain ──────────────────────────── */
+[data-theme="plum"] {
+  --bg:      #120D18;
+  --bg-deep: #08060C;
+  --paper:   #F2E4E8;
+  --accent:  #E3A0B4;
+  --hot:     #9B2F52;
+  --wood:    #2E1C2E;
+  --wood-hi: #4A2C46;
+  --ink-on-paper: #2A1520;
+  --grain: .07;
+  --grade: sepia(.44) saturate(1.18) contrast(1.05) brightness(.95) hue-rotate(-14deg);
+
+  --ink:       #F2E4E8;
+  --ink-soft:  #B79AA6;
+  --room:      #060309;
+  --room-deep: #020104;
+  --seam:      rgba(0, 0, 0, .40);
+  --sheen:     rgba(255, 255, 255, .05);
+  --shade:     rgba(0, 0, 0, .78);
+}
+
+/* ── MINT · morning, clean, quiet ───────────────────────────────── */
+[data-theme="mint"] {
+  --bg:      #07120F;
+  --bg-deep: #030907;
+  --paper:   #E8F5EC;
+  --accent:  #7FD6B0;
+  --hot:     #2E8B72;
+  --wood:    #1F3A32;
+  --wood-hi: #2E5448;
+  --ink-on-paper: #10261F;
+  --grain: .05;
+  --grade: sepia(.30) saturate(1.10) contrast(1.03) brightness(1.02) hue-rotate(-2deg);
+
+  --ink:       #E8F5EC;
+  --ink-soft:  #9CC0B1;
+  --room:      #04100C;
+  --room-deep: #010504;
+  --seam:      rgba(0, 0, 0, .34);
+  --sheen:     rgba(255, 255, 255, .05);
+  --shade:     rgba(0, 0, 0, .74);
+}
+
+/* ── ROSE · soft, warm, blush ───────────────────────────────────── */
+[data-theme="rose"] {
+  --bg:      #140D0E;
+  --bg-deep: #0A0607;
+  --paper:   #FBEDE4;
+  --accent:  #F0A184;
+  --hot:     #B8433A;
+  --wood:    #3B2420;
+  --wood-hi: #5A382F;
+  --ink-on-paper: #2C1714;
+  --grain: .06;
+  --grade: sepia(.50) saturate(1.20) contrast(1.03) brightness(.99) hue-rotate(-8deg);
+
+  --ink:       #FBEDE4;
+  --ink-soft:  #C6A79D;
+  --room:      #0A0406;
+  --room-deep: #030102;
+  --seam:      rgba(0, 0, 0, .38);
+  --sheen:     rgba(255, 255, 255, .05);
+  --shade:     rgba(0, 0, 0, .78);
+}

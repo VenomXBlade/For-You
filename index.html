@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0B0A0F">
+<title>For Devika</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500;1,700&family=Courier+Prime&display=swap" rel="stylesheet">
+
+<!-- three.js module resolution (the GLTF loader imports bare "three") -->
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.166.1/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.166.1/examples/jsm/"
+  }
+}
+</script>
+
+<!-- design tokens + themes -->
+<link rel="stylesheet" href="css/theme.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/table.css">
+<link rel="stylesheet" href="css/card.css">
+<link rel="stylesheet" href="css/film.css">
+<link rel="stylesheet" href="css/stickers.css">
+<link rel="stylesheet" href="css/curtain.css">
+</head>
+
+<body>
+
+<div id="grain" aria-hidden="true"></div>
+<div id="petals" aria-hidden="true"></div>
+<div id="confetti" aria-hidden="true"></div>
+
+<!-- ══════════════ -1 · INTRO CURTAIN · MISTLETOE PULL ══════════════ -->
+<div id="intro-curtain" class="intro-curtain" role="dialog" aria-label="Pull the mistletoe to begin">
+  <div class="curtain-dust" aria-hidden="true"></div>
+  <div class="light-flash" id="light-flash" aria-hidden="true"></div>
+
+  <div class="pull-rig" id="pull-rig" role="button" tabindex="0" aria-label="Pull cord to reveal surprise">
+    <div class="pull-sway">
+      <div class="pull-cord-line"></div>
+      <div class="pull-mistletoe-anchor">
+        <svg class="mistletoe-svg" viewBox="0 0 140 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Top hanging gold ring -->
+          <circle cx="70" cy="8" r="6" stroke="#E6C25B" stroke-width="2.5" fill="none"/>
+          <line x1="70" y1="14" x2="70" y2="35" stroke="#E6C25B" stroke-width="2"/>
+
+          <!-- Left branch & leaves -->
+          <path d="M70 42 Q52 48 38 68" stroke="#3E5F3B" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M42 62 C30 52 18 58 22 72 C26 84 40 76 42 62 Z" fill="#4D744A" stroke="#2D4A2B" stroke-width="1.2"/>
+          <path d="M52 50 C40 38 28 44 32 58 C36 68 50 62 52 50 Z" fill="#5E8A5A" stroke="#355532" stroke-width="1.2"/>
+          <path d="M36 70 C24 64 16 74 24 86 C32 94 44 82 36 70 Z" fill="#466E43" stroke="#2D4A2B" stroke-width="1.2"/>
+
+          <!-- Right branch & leaves -->
+          <path d="M70 42 Q88 48 102 68" stroke="#3E5F3B" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M98 62 C110 52 122 58 118 72 C114 84 100 76 98 62 Z" fill="#4D744A" stroke="#2D4A2B" stroke-width="1.2"/>
+          <path d="M88 50 C100 38 112 44 108 58 C104 68 90 62 88 50 Z" fill="#5E8A5A" stroke="#355532" stroke-width="1.2"/>
+          <path d="M104 70 C116 64 124 74 116 86 C108 94 96 82 104 70 Z" fill="#466E43" stroke="#2D4A2B" stroke-width="1.2"/>
+
+          <!-- Center sprig leaves -->
+          <path d="M70 42 L70 78" stroke="#3E5F3B" stroke-width="2.2" stroke-linecap="round"/>
+          <path d="M68 58 C58 68 62 82 72 80 C80 78 78 64 68 58 Z" fill="#588555" stroke="#355532" stroke-width="1.2"/>
+
+          <!-- Pearlescent Mistletoe Berries -->
+          <circle cx="62" cy="52" r="5" fill="#FFFBF5" stroke="#F6CAD8" stroke-width="1.5"/>
+          <circle cx="60.5" cy="50.5" r="1.5" fill="#FFFFFF"/>
+          <circle cx="78" cy="53" r="5.5" fill="#FFFBF5" stroke="#F6CAD8" stroke-width="1.5"/>
+          <circle cx="76.5" cy="51" r="1.8" fill="#FFFFFF"/>
+          <circle cx="70" cy="62" r="4.8" fill="#FFFBF5" stroke="#F6CAD8" stroke-width="1.5"/>
+          <circle cx="68.8" cy="60.5" r="1.5" fill="#FFFFFF"/>
+
+          <!-- Coquette Pink Satin Ribbon Bow -->
+          <!-- Center knot -->
+          <ellipse cx="70" cy="42" rx="7" ry="5.5" fill="#D6336C" stroke="#A61E4D" stroke-width="1.2"/>
+          <ellipse cx="69" cy="41" rx="4" ry="2.5" fill="#F78CA8"/>
+          <!-- Left bow loop -->
+          <path d="M64 42 C45 28 32 46 62 48 Z" fill="#F06595" stroke="#C2255C" stroke-width="1.5"/>
+          <path d="M60 41 C48 34 40 44 58 46 Z" fill="#FCC2D7" opacity="0.65"/>
+          <!-- Right bow loop -->
+          <path d="M76 42 C95 28 108 46 78 48 Z" fill="#F06595" stroke="#C2255C" stroke-width="1.5"/>
+          <path d="M80 41 C92 34 100 44 82 46 Z" fill="#FCC2D7" opacity="0.65"/>
+          <!-- Ribbon tails with elegant swallowtail notches -->
+          <path d="M65 47 Q52 72 44 98 L54 94 L60 99 Q68 76 68 47 Z" fill="#E64980" stroke="#C2255C" stroke-width="1"/>
+          <path d="M75 47 Q88 72 96 98 L86 94 L80 99 Q72 76 72 47 Z" fill="#E64980" stroke="#C2255C" stroke-width="1"/>
+
+          <!-- Bottom loop for pull chain -->
+          <circle cx="70" cy="112" r="3.5" stroke="#E6C25B" stroke-width="1.5" fill="none"/>
+        </svg>
+
+        <div class="pull-chain"></div>
+        <div class="pull-bead"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pull-prompt" id="pull-prompt">
+    <span class="prompt-arrow">✨</span>
+    <p class="prompt-text">click to turn on the lights</p>
+    <span class="prompt-sub">a surprise is waiting in the dark 🎀</span>
+  </div>
+</div>
+
+<!-- ══════════════ 0 · THE DOOR ══════════════ -->
+<section id="door" class="scene is-active">
+  <div class="door-card">
+    <span class="door-bow" aria-hidden="true">🎀</span>
+    <p class="kicker" id="door-kicker"></p>
+    <h1 class="display" id="door-title"></h1>
+    <button class="btn-primary" id="begin"></button>
+  </div>
+</section>
+
+<!-- ══════════════ 1 · THE TABLE / COQUETTE SANCTUARY ══════════════ -->
+<section id="table" class="scene">
+  <div class="coquette-phone-frame">
+    <!-- Ornate Double Border -->
+    <div class="coquette-border-decor" aria-hidden="true"></div>
+
+    <!-- Header -->
+    <header class="coquette-header">
+      <span class="coquette-bow" aria-hidden="true">🎀</span>
+      <h1 class="coquette-title">Happy Birthday,<br><span class="coquette-name" id="stage-name">Devika</span></h1>
+      <p class="coquette-subtitle" id="hint" data-copy="hint">✦ tap anything to explore ✦</p>
+    </header>
+
+    <!-- The Grand Archway Stage -->
+    <div class="coquette-arch">
+      <!-- Ambient Candle Glow behind cake -->
+      <div class="arch-glow" aria-hidden="true"></div>
+
+      <!-- The Centerpiece Cake -->
+      <div class="prop-cake" id="prop-cake" role="button" tabindex="0" aria-label="Devika's birthday cake - tap to make a wish">
+        <div class="cake-img-wrapper">
+          <img src="assets/victorian_cake.png" class="cake-centerpiece-img" alt="Victorian ruffle birthday cake for Devika">
+          <!-- Animated flickering candle flames -->
+          <div class="candle-flames" id="candle-flames" aria-hidden="true">
+            <span class="cake-flame flame-1"></span>
+            <span class="cake-flame flame-2"></span>
+            <span class="cake-flame flame-3"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- The Luxury Satin Bow Envelope (Bottom Left) -->
+      <button class="prop-card" id="prop-card" type="button" aria-label="Open birthday card">
+        <img src="assets/luxury_envelope.png" class="prop-img-envelope" alt="Love letter envelope for Devika">
+      </button>
+
+      <!-- The Retro Pastel Instax Camera (Bottom Right) -->
+      <button class="prop-camera" id="prop-camera" type="button" aria-label="Play photo film reel">
+        <img src="assets/instax_camera.png" class="prop-img-camera" alt="Pastel pink camera">
+      </button>
+    </div>
+
+    <!-- Floating Glassmorphism Pill Actions -->
+    <div class="coquette-actions">
+      <button class="btn-coquette-pill btn-pill-sticker" id="pill-stickers" type="button">
+        COMPLETE STICKER BOOK 📖✨
+      </button>
+      <button class="btn-coquette-pill" id="pill-card" type="button">
+        OPEN YOUR CARD 💌
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ 2 · THE CARD ══════════════ -->
+<div class="layer" id="card-layer" role="dialog" aria-modal="true" aria-label="Birthday card">
+  <article class="paper">
+    <p class="paper-top" id="paper-top"></p>
+    <h2 class="paper-name" id="paper-name"></h2>
+    <div class="paper-body" id="paper-body" aria-live="polite"></div>
+    <p class="paper-sign" id="paper-sign"></p>
+    <div class="paper-actions">
+      <button class="btn-ghost" id="card-skip" data-copy="skip"></button>
+      <button class="btn-solid" id="card-close" data-copy="close"></button>
+    </div>
+  </article>
+</div>
+
+<!-- ══════════════ 3 · THE FILM ══════════════ -->
+<div class="layer" id="film-layer" aria-label="Photo reel">
+  <div class="film-frame-border">
+    <div class="film-perf film-perf-top" aria-hidden="true"></div>
+
+    <div class="film-head">
+      <span id="film-title"></span>
+      <button class="btn-ghost small" id="film-exit" data-copy="exitFilm"></button>
+    </div>
+
+    <div class="reel" id="reel"></div>
+
+    <div class="credits" id="credits" hidden>
+      <p class="credits-kicker" id="credits-kicker"></p>
+      <h2 class="credits-title" id="credits-title"></h2>
+      <dl class="credits-list" id="credits-list"></dl>
+      <div class="credits-actions">
+        <button class="btn-ghost" id="credits-replay" data-copy="replay"></button>
+        <button class="btn-solid" id="credits-wish" data-copy="wishLabel"></button>
+      </div>
+    </div>
+
+    <div class="film-perf film-perf-bottom" aria-hidden="true"></div>
+    <div class="film-flicker" aria-hidden="true"></div>
+  </div>
+</div>
+
+<!-- ══════════════ 4 · THE WISH ══════════════ -->
+<div class="layer" id="wish-layer" aria-label="Make a wish">
+  <div class="wish-inner">
+    <p class="kicker" id="wish-kicker"></p>
+    <h2 class="display" id="wish-title"></h2>
+    <button class="btn-primary" id="wish-blow" data-copy="blowLabel"></button>
+    <p class="wish-end" id="wish-end" hidden></p>
+    <button class="btn-ghost small" id="wish-restart" data-copy="restart" hidden></button>
+  </div>
+</div>
+
+<!-- ══════════════ 5 · THE SLICE ══════════════ -->
+<div class="layer" id="cake-layer" role="dialog" aria-modal="true" aria-label="Your birthday cake">
+  <div class="cake-pop">
+    <svg class="cake-pop-art" viewBox="0 0 220 190" role="img" aria-label="A slice of birthday cake">
+      <defs>
+        <clipPath id="cakeSlice">
+          <path d="M76 98 Q69 120 62 144 L158 144 Q151 120 144 98 Z"/>
+        </clipPath>
+      </defs>
+
+      <ellipse cx="110" cy="166" rx="76" ry="11" fill="rgba(214,68,107,.12)"/>
+      <ellipse cx="110" cy="155" rx="80" ry="15" fill="#FFFBF8" stroke="#F0C3D2" stroke-width="2"/>
+      <ellipse cx="110" cy="152" rx="58" ry="9" fill="#FCE3EC"/>
+
+      <g clip-path="url(#cakeSlice)">
+        <rect x="54" y="92" width="112" height="58" fill="#FFF7F1"/>
+        <rect x="54" y="110" width="112" height="11" fill="#F7C4D0"/>
+        <rect x="54" y="130" width="112" height="11" fill="#F7C4D0"/>
+        <rect x="54" y="141" width="112" height="9" fill="#FFF7F1"/>
+      </g>
+      <path d="M76 98 Q69 120 62 144 L158 144 Q151 120 144 98 Z" fill="none" stroke="#EAB2C2" stroke-width="2" stroke-linejoin="round"/>
+      <path d="M143 98 Q150 120 157 143 Q150 147 145 143 Q148 124 143 110 Z" fill="rgba(214,68,107,.10)"/>
+
+      <path d="M72 100 C 76 76 144 76 148 100 L148 106
+               q-7 9 -14 2 q-8 9 -16 2 q-8 9 -16 2 q-8 8 -15 1 q-6 -7 -15 -1 Z"
+            fill="#FFFCF7" stroke="#F3C6D3" stroke-width="1.4" stroke-linejoin="round"/>
+
+      <g>
+        <path d="M110 62 c9 0 15 8 15 14 c0 9 -7 15 -15 15 c-8 0 -15 -6 -15 -15 c0 -6 6 -14 15 -14 Z" fill="#D6446B"/>
+        <path d="M110 70 c4 -1 7 1 8 4" fill="none" stroke="#F78CA8" stroke-width="1.6" stroke-linecap="round" opacity=".8"/>
+        <path d="M110 62 l-2 -7 l-6 3 l4 5 l-7 1 l6 4 l5 -5 l5 5 l6 -4 l-7 -1 l4 -5 l-6 -3 Z" fill="#5D9C6C"/>
+        <g fill="#FFE3A8">
+          <circle cx="103" cy="72" r="1.1"/><circle cx="112" cy="69" r="1.1"/>
+          <circle cx="117" cy="76" r="1.1"/><circle cx="106" cy="80" r="1.1"/>
+          <circle cx="114" cy="85" r="1.1"/>
+        </g>
+      </g>
+
+      <g fill="#F4A9BF" opacity=".9">
+        <circle cx="178" cy="146" r="6.5"/><circle cx="186" cy="139" r="5"/><circle cx="191" cy="147" r="5"/>
+        <circle cx="182" cy="154" r="4.6"/><circle cx="173" cy="153" r="4.2"/>
+        <circle cx="183.5" cy="146" r="2" fill="#FFF6D8"/>
+      </g>
+      <g fill="#F6BCCB" opacity=".85">
+        <path d="M33 148 q7 -9 14 -1 q-7 9 -14 1 Z"/>
+        <path d="M41 156 q5 -7 11 -1 q-5 7 -11 1 Z"/>
+      </g>
+    </svg>
+
+    <p class="cake-pop-kicker" data-copy="cakePopKicker"></p>
+    <h2 class="cake-pop-title" data-copy="cakePopTitle"></h2>
+    <p class="cake-pop-line" data-copy="cakePopLine"></p>
+
+    <div class="cake-pop-actions">
+      <button class="btn-ghost" id="cake-close" data-copy="close"></button>
+      <button class="btn-solid" id="cake-blow" data-copy="wishLabel" hidden></button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ 6 · THE STICKER BOOK ══════════════ -->
+<div class="layer" id="sticker-book-layer" role="dialog" aria-modal="true" aria-label="Devika's Sticker Book">
+  <div class="sticker-book-container">
+    <!-- Top Navigation & Love EXP Bar -->
+    <div class="sticker-header">
+      <button class="btn-ghost small sticker-back-btn" id="sticker-close" type="button">‹ Return</button>
+      <div class="love-exp-wrapper">
+        <div class="love-exp-label">
+          <span class="exp-title">💖 LOVE EXP</span>
+          <span class="exp-counter" id="exp-counter">0 / 10</span>
+        </div>
+        <div class="love-exp-bar-track">
+          <div class="love-exp-bar-fill" id="exp-bar-fill"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- The Book View -->
+    <div class="book-shell">
+      <div class="book-page" id="book-page">
+        <div class="book-ribbon-mark" aria-hidden="true">🎀</div>
+        <div class="page-header">
+          <span class="page-title" id="page-title">Chapter 1 · Sweet Memories</span>
+          <span class="page-sub" id="page-sub">Match the stickers into their places ✨</span>
+        </div>
+
+        <!-- 2 Sticker Drop Slots on this page -->
+        <div class="page-slots">
+          <div class="sticker-slot" id="slot-left" data-slot-id="1">
+            <div class="slot-outline">
+              <span class="slot-number">#1</span>
+              <span class="slot-hint">Stick #1 here</span>
+              <img class="slot-placed-img" id="slot-img-left" src="" alt="Placed sticker" hidden>
+            </div>
+          </div>
+          <div class="sticker-slot" id="slot-right" data-slot-id="2">
+            <div class="slot-outline">
+              <span class="slot-number">#2</span>
+              <span class="slot-hint">Stick #2 here</span>
+              <img class="slot-placed-img" id="slot-img-right" src="" alt="Placed sticker" hidden>
+            </div>
+          </div>
+        </div>
+
+        <!-- Page Flipping Controls -->
+        <div class="book-nav">
+          <button class="btn-ghost small page-btn" id="prev-page" type="button">‹ Prev</button>
+          <span class="page-indicator" id="page-indicator">Pages 1-2 of 10</span>
+          <button class="btn-ghost small page-btn" id="next-page" type="button">Next ›</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Sticker Inventory Carousel -->
+    <div class="sticker-carousel-tray">
+      <div class="carousel-label">
+        <span>🎀 Sticker Inventory (Drag to Place)</span>
+      </div>
+      <div class="sticker-carousel" id="sticker-carousel">
+        <!-- Dynamic sticker items (1 to 10) -->
+      </div>
+    </div>
+
+    <!-- Completion Congrats Modal -->
+    <div class="sticker-congrats-modal" id="sticker-congrats-modal" hidden>
+      <div class="congrats-card">
+        <span class="congrats-bow">🎀</span>
+        <div class="congrats-badge">MAX LOVE LEVEL REACHED 💖</div>
+        <h2 class="congrats-title">Congratulations, Devika! 🎉</h2>
+        <p class="congrats-text">
+          You've filled every single page of your memory sticker book!
+          Each little sticker represents a smile, a cherished moment, and how much happiness you bring to everyone around you.
+        </p>
+        <p class="congrats-quote">
+          "Some people make the world brighter just by being in it — happy birthday, Devika 💕"
+        </p>
+        <button class="btn-primary congrats-btn" id="congrats-view-btn" type="button">
+          VIEW STICKER BOOK AGAIN 📖✨
+        </button>
+        <button class="btn-ghost small congrats-btn congrats-home-link" id="congrats-home-btn" type="button">
+          RETURN HOME 🎂
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<noscript><p style="padding:2rem;color:#eee">This page needs JavaScript.</p></noscript>
+
+<script src="config.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/scene.js"></script>
+<script src="js/letter.js"></script>
+<script src="js/film.js"></script>
+<script src="js/stickers.js"></script>
+<script src="js/curtain.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,382 @@
+/* ═══════════════════════════════════════════════════════════════════
+   COQUETTE TABLE & SANCTUARY — Soft blush silk, vintage Lambeth cake,
+   luxury satin envelope, and pastel Instax camera.
+   ═══════════════════════════════════════════════════════════════════ */
+
+#table,
+#door {
+  background-color: #FDF0F4;
+  background-image: url('../assets/silk_bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  overflow: hidden;
+  padding: env(safe-area-inset-top, 12px) 12px env(safe-area-inset-bottom, 12px) 12px;
+}
+
+/* ── 0 · THE DOOR CARD ─────────────────────────────────────────── */
+.door-card {
+  position: relative;
+  max-width: 380px;
+  width: 90%;
+  padding: clamp(30px, 8vw, 44px) clamp(20px, 5vw, 32px);
+  border-radius: clamp(24px, 6vw, 36px);
+  background: rgba(255, 255, 255, 0.88);
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+  border: 1.5px solid rgba(255, 255, 255, 0.95);
+  box-shadow:
+    0 24px 60px -10px rgba(160, 45, 85, 0.32),
+    0 0 0 1px rgba(246, 175, 195, 0.3) inset;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  animation: card-appear 0.9s var(--ease) both;
+}
+@keyframes card-appear {
+  from { opacity: 0; transform: translateY(18px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.door-bow {
+  font-size: 36px;
+  line-height: 1;
+  margin-bottom: 12px;
+  display: inline-block;
+  animation: bow-sway 3.2s ease-in-out infinite alternate;
+}
+@keyframes bow-sway {
+  from { transform: rotate(-4deg); }
+  to   { transform: rotate(4deg); }
+}
+
+/* ── 1 · THE PHONE FRAME / SANCTUARY CARD ──────────────────────── */
+.coquette-phone-frame {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  height: 100%;
+  max-height: 860px;
+  margin: auto;
+  background: linear-gradient(180deg,
+    rgba(255, 246, 248, 0.97) 0%,
+    rgba(254, 236, 243, 0.95) 52%,
+    rgba(251, 224, 235, 0.97) 100%);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  border-radius: clamp(24px, 5vw, 40px);
+  box-shadow:
+    0 25px 65px -12px rgba(160, 45, 85, 0.40),
+    0 0 0 1px rgba(255, 255, 255, 0.85) inset;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: clamp(14px, 3.2vw, 20px) clamp(12px, 3vw, 18px);
+  box-sizing: border-box;
+  overflow: hidden;
+  animation: card-appear 0.8s var(--ease) both;
+}
+
+/* delicate double border */
+.coquette-border-decor {
+  position: absolute;
+  inset: 8px;
+  border: 1.5px solid rgba(225, 140, 170, 0.36);
+  border-radius: clamp(18px, 4.4vw, 32px);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* ── HEADER (BIGGER & PROMINENT FOR MOBILE) ────────────────────── */
+.coquette-header {
+  position: relative;
+  text-align: center;
+  z-index: 5;
+  margin-top: 4px;
+}
+
+.coquette-bow {
+  display: inline-block;
+  font-size: 30px;
+  line-height: 1;
+  animation: bow-sway 3.2s ease-in-out infinite alternate;
+}
+
+.coquette-title {
+  font: italic 600 clamp(26px, 7vw, 36px)/1.15 var(--serif);
+  color: #2F111E;
+  letter-spacing: -0.01em;
+  margin: 2px 0 0;
+  text-shadow: 0 2px 10px rgba(232, 99, 140, 0.2);
+}
+
+.coquette-name {
+  font-family: var(--script);
+  font-size: clamp(48px, 13vw, 68px);
+  font-weight: normal;
+  color: #D6336C;
+  display: block;
+  margin-top: 1px;
+  line-height: 1.05;
+  text-shadow: 0 4px 18px rgba(214, 51, 108, 0.35);
+}
+
+.coquette-subtitle {
+  font: 11px/1.3 var(--mono);
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #8C3854;
+  font-weight: 700;
+  margin-top: 4px;
+}
+
+/* ── THE GRAND ARCHWAY STAGE ───────────────────────────────────── */
+.coquette-arch {
+  position: relative;
+  width: 100%;
+  flex: 1 1 auto;
+  min-height: 380px;
+  max-height: 56vh;
+  border-radius: 175px 175px 24px 24px;
+  background: radial-gradient(ellipse at 50% 64%,
+    #FFFFFF 0%,
+    #FFF6F9 52%,
+    #FDE2ED 100%);
+  border: 1.5px solid rgba(230, 160, 185, 0.5);
+  box-shadow:
+    inset 0 4px 18px rgba(220, 130, 160, 0.16),
+    0 10px 28px -6px rgba(150, 60, 90, 0.16);
+  overflow: visible;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  margin: 6px 0;
+}
+
+/* soft ambient candle aura */
+.arch-glow {
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  background: radial-gradient(circle,
+    rgba(255, 210, 140, 0.38) 0%,
+    rgba(255, 175, 185, 0.18) 45%,
+    transparent 72%);
+  pointer-events: none;
+  filter: blur(14px);
+  animation: arch-glow-pulse 4s ease-in-out infinite alternate;
+}
+@keyframes arch-glow-pulse {
+  from { opacity: 0.75; transform: translate(-50%, -50%) scale(0.95); }
+  to   { opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
+}
+
+/* ── THE CAKE CENTERPIECE (LARGER & RAISED) ─────────────────────── */
+.prop-cake {
+  position: relative;
+  width: min(96%, 335px);
+  margin-bottom: 22px;
+  transform: translateY(-8px);
+  z-index: 5;
+  cursor: pointer;
+  text-align: center;
+  border: none;
+  background: none;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+.prop-cake:focus-visible { outline: none; }
+
+.cake-img-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.cake-centerpiece-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 14px 22px rgba(130, 45, 75, 0.30));
+  transition: transform 0.3s var(--ease);
+}
+.prop-cake:hover .cake-centerpiece-img,
+.prop-cake:focus-visible .cake-centerpiece-img {
+  transform: scale(1.03);
+}
+.prop-cake:active .cake-centerpiece-img {
+  transform: scale(0.98);
+}
+
+/* ── ANIMATED CANDLE FLAMES ─────────────────────────────────────── */
+.candle-flames {
+  position: absolute;
+  top: 13.5%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40%;
+  height: 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  pointer-events: none;
+  z-index: 6;
+}
+
+.cake-flame {
+  width: 10px;
+  height: 18px;
+  background: radial-gradient(circle at 50% 80%,
+    #FFFFFF 0%,
+    #FFF3AF 30%,
+    #FF9E3A 70%,
+    rgba(255, 60, 20, 0.8) 100%);
+  border-radius: 50% 50% 35% 35% / 60% 60% 40% 40%;
+  box-shadow:
+    0 0 12px #FFA842,
+    0 0 28px rgba(255, 170, 60, 0.65);
+  animation: flame-flicker 1.2s ease-in-out infinite alternate;
+}
+.flame-1 { animation-delay: -0.2s; }
+.flame-2 { animation-delay: -0.7s; transform: scale(1.15); }
+.flame-3 { animation-delay: -0.4s; }
+
+@keyframes flame-flicker {
+  0%   { transform: translateY(0) scale(1) rotate(-2deg); opacity: 0.95; }
+  50%  { transform: translateY(-2px) scale(0.92, 1.1) rotate(2deg); opacity: 1; }
+  100% { transform: translateY(1px) scale(1.06, 0.95) rotate(-1deg); opacity: 0.9; }
+}
+
+.candle-flames.is-blown .cake-flame {
+  opacity: 0;
+  transform: translateY(-8px) scale(0);
+  transition: opacity 0.5s var(--ease), transform 0.5s var(--ease);
+}
+
+/* ── THE LUXURY ENVELOPE (BOTTOM LEFT) ─────────────────────────── */
+.prop-card {
+  position: absolute;
+  left: -2%;
+  bottom: 4%;
+  width: clamp(98px, 28vw, 126px);
+  transform: rotate(-6deg);
+  z-index: 8;
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+  transition: transform 0.3s var(--ease);
+  -webkit-tap-highlight-color: transparent;
+}
+.prop-card:focus-visible { outline: none; }
+
+.prop-img-envelope {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 8px 16px rgba(120, 40, 65, 0.26));
+  transition: transform 0.3s var(--ease);
+}
+.prop-card:hover .prop-img-envelope,
+.prop-card:focus-visible .prop-img-envelope {
+  transform: scale(1.08) rotate(-2deg);
+}
+.prop-card:active .prop-img-envelope {
+  transform: scale(0.96) rotate(-2deg);
+}
+
+/* ── THE PASTEL INSTAX CAMERA (BOTTOM RIGHT) ────────────────────── */
+.prop-camera {
+  position: absolute;
+  right: 2%;
+  bottom: 2%;
+  width: clamp(86px, 24vw, 112px);
+  transform: rotate(5deg);
+  z-index: 9;
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+  transition: transform 0.3s var(--ease);
+  -webkit-tap-highlight-color: transparent;
+}
+.prop-camera:focus-visible { outline: none; }
+
+.prop-img-camera {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 8px 16px rgba(120, 40, 65, 0.26));
+  transition: transform 0.3s var(--ease);
+}
+.prop-camera:hover .prop-img-camera,
+.prop-camera:focus-visible .prop-img-camera {
+  transform: scale(1.08) rotate(0deg);
+}
+.prop-camera:active .prop-img-camera {
+  transform: scale(0.96) rotate(0deg);
+}
+
+/* ── FLOATING GLASSMORPHISM PILL ACTIONS ────────────────────────── */
+.coquette-actions {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  margin-top: 4px;
+}
+
+.btn-coquette-pill {
+  position: relative;
+  width: min(92%, 290px);
+  padding: 12px 20px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.90);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  border: 1.5px solid rgba(255, 255, 255, 0.98);
+  box-shadow:
+    0 8px 22px -4px rgba(214, 68, 107, 0.32),
+    0 0 0 2px rgba(248, 180, 202, 0.25);
+  font: 700 11.5px/1 var(--mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #B3325B;
+  cursor: pointer;
+  transition: transform 0.25s var(--ease), box-shadow 0.25s, background 0.25s, color 0.25s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn-pill-sticker {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.97) 0%, rgba(255, 238, 245, 0.97) 100%);
+  color: #B82856;
+  border-color: rgba(232, 99, 140, 0.45);
+  box-shadow:
+    0 8px 24px -4px rgba(214, 68, 107, 0.38),
+    0 0 0 2px rgba(232, 99, 140, 0.3);
+  animation: pill-pulse 3.5s ease-in-out infinite;
+}
+
+@keyframes pill-pulse {
+  0%, 100% { transform: translateY(0); box-shadow: 0 8px 22px -4px rgba(214, 68, 107, 0.35), 0 0 0 2px rgba(248, 180, 202, 0.25); }
+  50%      { transform: translateY(-2px); box-shadow: 0 12px 26px -2px rgba(214, 68, 107, 0.44), 0 0 0 4px rgba(248, 180, 202, 0.35); }
+}
+
+.btn-coquette-pill:hover,
+.btn-coquette-pill:focus-visible {
+  transform: translateY(-2px) scale(1.02);
+  background: #FFFFFF;
+  color: #D6446B;
+}
+.btn-coquette-pill:active {
+  transform: translateY(1px) scale(0.97);
+}
