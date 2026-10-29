@@ -14,15 +14,12 @@ window.BIRTHDAY = {
   title: "For Devika",
   kicker: "a small thing, made for you",
 
- ```js
-/* ── the card ─────────────────────────────────────────────────── */
+  /* ── the card ─────────────────────────────────────────────────── */
+  // Shown at the top of the letter.
+  letterTop: "a little late, but made with love",
 
-// Shown at the top of the letter.
-letterTop: "a little late, but made with love",
-
-// The letter itself. Plain text. Blank lines become paragraph breaks.
-letter:
-
+  // The letter itself. Plain text. Blank lines become paragraph breaks.
+  letter:
 `I know, I know — I'm a little late. But a plain "happy birthday" text felt way too small for someone like you anyway.
 
 So I built you this whole little corner of the internet instead. There's your cake waiting for a wish, a little photo album filled with your memories, and a sticker book for you to fill up piece by piece. Tap around and explore everything — nothing here breaks.
@@ -34,7 +31,6 @@ I hope this new year of your life brings you good things, unexpected adventures,
 Happy birthday, Devika! ❤️
 
 Now go make a proper wish and blow out those candles. No shortcuts — I did put in the effort to make the cake, after all.`,
-```
 
   /* ── the film ─────────────────────────────────────────────────── */
   // Order matters. Add or remove freely.

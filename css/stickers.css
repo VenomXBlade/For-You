@@ -194,7 +194,7 @@
   padding: 6px;
   box-sizing: border-box;
   transition: all 0.3s ease;
-  cursor: pointer;
+  cursor: default;
 }
 
 .sticker-slot:hover {

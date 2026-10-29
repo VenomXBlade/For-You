@@ -9,7 +9,7 @@ A personalized, mobile-first birthday surprise website designed with a **soft co
 ### 1. 🕯️ The Midnight Mistletoe Curtain (Intro)
 - The site begins in a velvet midnight room with subtle floating fairy dust, keeping the surprise secret until opened.
 - A golden hanging cord holds a festive **botanical mistletoe sprig** with winter pearl berries and a satin pink ribbon bow (`🎀`), ending in a golden pull bead.
-- **On Mobile & PC**: Tap, click, or pull the cord down to trigger a tactile light-switch click sound, a warm golden expanding light burst, and confetti that dissolves the veil to unveil the surprise!
+- **One-Click Interaction**: Simply click or tap anywhere on the mistletoe, cord, or bead to trigger a tactile light-switch click sound, a warm golden expanding light burst, and confetti that dissolves the veil to unveil the surprise!
 
 ### 2. 💌 The Door (Landing)
 - Glassmorphism landing card: *"For Devika — open your surprise 💌"*.
@@ -41,12 +41,34 @@ A personalized, mobile-first birthday surprise website designed with a **soft co
   - Chapter 4 · Golden Hours (Stickers #7 & #8)
   - Chapter 5 · Forever & Always (Stickers #9 & #10)
 - **Interactive Gameplay**:
-  - **One-Tap Placement**: Tap any sticker in the bottom carousel to automatically place it into its slot!
-  - **Touch & Drag**: Supports touch-drag on mobile and native drag-and-drop on desktop.
+  - **Drag-and-Drop Only**: Drag stickers from the bottom inventory into their corresponding numbered book slots (HTML5 drag-and-drop on PC and smooth touch-drag on mobile). Tap-to-place is intentionally disabled so stickers must be intentionally dragged into place.
   - **Live Love EXP Bar**: Tracks progress live (`1 / 10` up to `10 / 10`) with an animated gradient bar.
   - **Auto-Advance**: Pages automatically flip forward once both chapter stickers are placed.
   - **Auto-Scroll Carousel**: Sliders auto-scroll sideways so the next sticker to choose is always in front.
   - **Max Love Celebration**: Completion popup with confetti and a *"VIEW STICKER BOOK AGAIN 📖✨"* button to flip through the completed album anytime.
+
+---
+
+## ✍️ How to Manually Edit the Letter
+
+You can customize or rewrite the letter anytime directly in [`config.js`](file:///config.js):
+
+1. Open [`config.js`](file:///config.js) in your text editor.
+2. Locate the `letterTop` and `letter` fields:
+   ```javascript
+   // Shown at the top of the letter
+   letterTop: "a little late, but made with love",
+
+   // The letter itself. Plain text. Blank lines become paragraph breaks.
+   letter:
+   `Your custom message goes here...
+
+   Leave an empty line for a new paragraph.
+
+   Happy birthday! ❤️`,
+   ```
+3. Type or edit your text inside the backticks (`` `...` ``).
+4. Save the file and refresh your browser.
 
 ---
 
@@ -74,20 +96,17 @@ Host for free on **GitHub Pages** so Devika can open the link directly on her ph
    git commit -m "Happy Birthday Devika 💕"
    ```
 
-2. **Create a Repository on GitHub**:
-   - Go to [github.com/new](https://github.com/new).
-   - Name it `for-devika` (or any name you prefer).
-   - Keep it **Public**.
+2. **Push to GitHub**:
+   - Create a new public repository on [GitHub](https://github.com/new) named `for-devika` (or any name you prefer).
+   - Link and push:
+     ```bash
+     git branch -M main
+     git remote add origin https://github.com/<your-username>/for-devika.git
+     git push -u origin main
+     ```
 
-3. **Push Code**:
-   ```bash
-   git branch -M main
-   git remote add origin https://github.com/<your-username>/for-devika.git
-   git push -u origin main
-   ```
-
-4. **Enable GitHub Pages**:
-   - Go to your repository **Settings** → **Pages**.
+3. **Enable GitHub Pages**:
+   - Go to your repository **Settings** > **Pages** (on the left sidebar).
    - Under **Build and deployment** > **Branch**: select `main` and folder `/(root)`.
    - Click **Save**.
    - Your live website link will be: `https://<your-username>.github.io/for-devika/`

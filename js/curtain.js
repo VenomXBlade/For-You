@@ -46,7 +46,7 @@ window.BD = window.BD || {};
         if (flash) flash.classList.add("flash-active");
 
         /* Small sparkle */
-        if (window.confetti) window.confetti(40);
+        if (typeof window.confetti === "function") window.confetti(40);
 
         setTimeout(function () {
           curtain.classList.add("is-hidden");
